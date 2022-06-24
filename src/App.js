@@ -42,9 +42,17 @@ function Cell(props){
   if(imageIndex>=6)
     imageIndex=11-imageIndex;
   let value=props.history?images[imageIndex+'.png']:logo;
+
+  const myStyle={
+    backgroundImage:`url(${value})`,
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center'
+
+  };
+  
   return(
-    <div key={props.imageIndex} className='grid-item' onClick={props.onClick}>
-      <img className='grid-image' src={value}  alt="logo"/>
+    <div style={myStyle}  key={props.imageIndex} className='grid-item' onClick ={props.onClick} > 
     </div>
   );
 }
@@ -55,11 +63,15 @@ class Game extends React.Component{
     super(props);
     this.state={
       content:shuffle(Array.from(Array(12).keys())),
-      history:Array.from(Array(12).fill(0)),
+      history:Array.from(Array(12).fill(1)),
       openCards:[],
       numOfMoves:0,
       score:0,
     };
+    delay(800).then(() => {
+      this.setState({
+        history:Array.from(Array(12).fill(0)),
+      })})
   }
 
   handleClick(index,imageId){
@@ -122,11 +134,15 @@ class Game extends React.Component{
           this.setState({
 
               content:shuffle(Array.from(Array(12).keys())),
-              history:Array.from(Array(12).fill(0)),
+              history:Array.from(Array(12).fill(1)),
               openCards:[],
               numOfMoves:0,
               score:0,
-              })
+              });
+              delay(800).then(() => {
+                this.setState({
+                  history:Array.from(Array(12).fill(0)),
+                })})
            }}
            > Restart</button>
         <p className='moves'>Moves: {this.state.numOfMoves}</p>

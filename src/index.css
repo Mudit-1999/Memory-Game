@@ -9,6 +9,7 @@ body {
   padding-left: 10%;
   padding-right: 10%;
   display:flex; flex-direction:column; justify-content:center;
+  background-color: white;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -20,9 +21,5 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-h1{
-  text-align: center;
 }
 
